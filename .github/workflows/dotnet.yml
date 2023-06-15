@@ -30,7 +30,8 @@ jobs:
       run: dotnet build --no-restore Application/src/RazorPagesTestSample/RazorPagesTestSample.csproj
     - name: Test
       run: dotnet test --no-build --verbosity normal Application/tests/RazorPagesTestSample.Tests/RazorPagesTestSample.Tests.cspro
-    - uses: JasonEtco/create-an-issue@v2
+    - name: create issue
+      uses: JasonEtco/create-an-issue@v2
       if: failure() # OR Check a bool variable you create and toggle as needed
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
