@@ -2,6 +2,13 @@ name: deploy webapp
 
 on:
   workflow_dispatch:
+  workflow_call:
+    inputs:
+        targetEnv:
+            description: 'Target environment name (i.e. dev, test or prod)'
+            default: 'prod'
+            required: false
+            type: string
 
 env:
   targetEnv: 06235devops-test
@@ -27,7 +34,7 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
         template: ./ARM-Templates/container-webapp-template.json
-        parameters: webAppName=${{ env.targetEnv }}
+        parameters: webAppName=${{ inputs.targetEnv }}
 
         # output containerName variable from template
     - run: echo ${{ steps.deploy.outputs.containerName }}
