@@ -31,10 +31,3 @@ jobs:
       run: dotnet build --no-restore Application/src/RazorPagesTestSample/RazorPagesTestSample.csproj
     - name: Test
       run: dotnet test --no-build --verbosity normal Application/tests/RazorPagesTestSample.Tests/RazorPagesTestSample.Tests.cspro
-    - name: create an issue
-      uses: dacbd/create-issue-action@main
-      if: failure()
-      with:
-        title: Simple test issue
-        body: my new issue
-        token: ${{ secrets.GITHUB_TOKEN }}
