@@ -1,5 +1,10 @@
 name: ci
-on: workflow_dispatch
+
+on:
+  workflow_dispatch:
+  issues:
+    types: [opened]
+
 jobs:
   job1:
     # if: ${{ github.ref == 'refs/heads/main' }}
