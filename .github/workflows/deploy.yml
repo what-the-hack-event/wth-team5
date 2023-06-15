@@ -10,7 +10,7 @@ on:
             type: string
 
 env:
-  targetEnv: 06235devops-test
+  targetEnv: test
 
 jobs:
   build-and-deploy:
@@ -33,7 +33,7 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: ${{ secrets.AZURE_RG }}
         template: ./ARM-Templates/container-webapp-template.json
-        parameters: webAppName=${{ inputs.targetEnv }}
+        parameters: webAppName=06235devops-${{ inputs.targetEnv }}
 
         # output containerName variable from template
     - run: echo ${{ steps.deploy.outputs.containerName }}
