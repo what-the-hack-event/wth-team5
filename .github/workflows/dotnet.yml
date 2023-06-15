@@ -37,5 +37,4 @@ jobs:
       with:
         title: Simple test issue
         body: my new issue
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        token: ${{ secrets.GITHUB_TOKEN }}
