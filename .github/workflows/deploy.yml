@@ -2,7 +2,6 @@ name: deploy webapp
 
 on:
   workflow_dispatch:
-  workflow_call:
     inputs:
         targetEnv:
             description: 'Target environment name (i.e. dev, test or prod)'
