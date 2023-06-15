@@ -29,4 +29,11 @@ jobs:
     - name: Build
       run: dotnet build --no-restore Application/src/RazorPagesTestSample/RazorPagesTestSample.csproj
     - name: Test
-      run: dotnet test --no-build --verbosity normal Application/tests/RazorPagesTestSample.Tests/RazorPagesTestSample.Tests.csproj
+      run: dotnet test --no-build --verbosity normal Application/tests/RazorPagesTestSample.Tests/RazorPagesTestSample.Tests.cspro
+    - uses: JasonEtco/create-an-issue@v2
+      if: failure() # OR Check a bool variable you create and toggle as needed
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        id: create-issue  
+    - run: 'echo Created issue number ${{ steps.create-issue.outputs.number }}'
+    - run: 'echo Created ${{ steps.create-issue.outputs.url }}' 
