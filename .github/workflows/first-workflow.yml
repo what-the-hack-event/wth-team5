@@ -5,5 +5,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "step 1 has run"
-      - run: echo "step 2 has run
+      - run: echo "step 2 has run"
     
