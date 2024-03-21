@@ -38,9 +38,8 @@ jobs:
       run: dotnet test ./Application/tests/RazorPagesTestSample.Tests/RazorPagesTestSample.Tests.csproj --no-build --verbosity normal
     
   push:
-
+    needs: build
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v4
     - name: Docker Login
@@ -49,3 +48,23 @@ jobs:
       run: docker build -t $registryName/$repositoryName:$tag --build-arg build_version=$tag $dockerFolderPath
     - name: Docker Push
       run: docker push $registryName/$repositoryName:$tag
+
+  dev:
+    needs: [build, push]
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Azure login
+      uses: azure/login@v2
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    - uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'c36swda46dmyy-dev'
+        images: 'contoso.azurecr.io/wth/dotnetcoreapp:$tag'
+      
+    
