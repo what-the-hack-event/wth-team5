@@ -13,6 +13,10 @@ on:
     paths:
       - 'Application/**'
 
+permissions:
+  id-token: write
+  contents: read
+
 env:
   registryName: c36swda46dmyywthreg.azurecr.io
   repositoryName: wth/dotnetcoreapp
