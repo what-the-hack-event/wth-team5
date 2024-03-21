@@ -68,5 +68,5 @@ jobs:
     - uses: azure/webapps-deploy@v2
       with:
         app-name: 'c36swda46dmyy-dev'
-        images: 'c36swda46dmyywthreg.azurecr.io/wth/dotnetcoreapp:latest'
+        images: 'c36swda46dmyywthreg.azurecr.io/wth/dotnetcoreapp:${{env.tag}}'
     
