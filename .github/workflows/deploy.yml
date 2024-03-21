@@ -22,9 +22,25 @@ jobs:
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
 
-      - name: Deploy Web App
+      - name: Deploy Web App (dev)
         uses: azure/arm-deploy@v1
         with:
           subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
           resourceGroupName: ${{ vars.AZURE_RESOURCE_GROUP_NAME }}
           template: ./InfrastructureAsCode/main.bicep
+
+      - name: Deploy Web App (test)
+        uses: azure/arm-deploy@v1
+        with:
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          resourceGroupName: ${{ vars.AZURE_RESOURCE_GROUP_NAME }}
+          template: ./InfrastructureAsCode/main.bicep
+          parameters: 'environment=test'
+      
+      - name: Deploy Web App (prod)
+        uses: azure/arm-deploy@v1
+        with:
+          subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+          resourceGroupName: ${{ vars.AZURE_RESOURCE_GROUP_NAME }}
+          template: ./InfrastructureAsCode/main.bicep
+          parameters: 'environment=prod'
