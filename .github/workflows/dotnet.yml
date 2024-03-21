@@ -69,4 +69,40 @@ jobs:
       with:
         app-name: 'c36swda46dmyy-dev'
         images: 'c36swda46dmyywthreg.azurecr.io/wth/dotnetcoreapp:${{env.tag}}'
+
+  test:
+    environment: test
+    needs: dev
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Azure login
+      uses: azure/login@v2
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    - uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'c36swda46dmyy-test'
+        images: 'c36swda46dmyywthreg.azurecr.io/wth/dotnetcoreapp:${{env.tag}}'
+
+  prod:
+    environment: test
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+
+    - name: Azure login
+      uses: azure/login@v2
+      with:
+        client-id: ${{ secrets.AZURE_CLIENT_ID }}
+        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+    - uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'c36swda46dmyy-prod'
+        images: 'c36swda46dmyywthreg.azurecr.io/wth/dotnetcoreapp:${{env.tag}}'
     
