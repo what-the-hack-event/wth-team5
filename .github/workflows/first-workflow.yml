@@ -8,4 +8,14 @@ jobs:
     steps:
       - run: echo "step 1 has run"
       - run: echo "step 2 has run"
+
+  job2:
+    name: cowsays
+    runs-on: ubuntu-latest
+    steps:
+    - name: Ship it
+      uses: mscoutermarsh/cowsays-action@master
+      with:
+        text: 'ship ship ship!'
+        color: 'red'
     
