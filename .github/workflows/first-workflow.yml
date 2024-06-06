@@ -9,12 +9,13 @@ jobs:
     - name: Step2
       run: echo "Step2"
 
-
   job2:
     runs-on: ubuntu-latest
     steps:
-    - name: Step1
-      run : echo "Step1" 
-    - name: Step2
-      run: echo "Step2"
+    - name: Checkout code
+      uses: actions/checkout@v2
+    - name: Cowsay Action
+      uses: nwtgck/gh-action-cowsay@v1
+      with:
+        text: "Hello, from GitHub Actions!"
     
