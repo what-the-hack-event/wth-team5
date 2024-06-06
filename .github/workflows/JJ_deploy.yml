@@ -1,0 +1,24 @@
+name: Deploy to Azure
+
+on: 
+  workflow_dispatch:
+ 
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check out code
+      uses: actions/checkout@v2
+    - name: Login to Azure
+      uses: azure/login@v1
+      with:
+        creds: ${{secrets.JJ_007}}
+    - name: Deploy Azure ARM Template
+      uses: Azure/arm-deploy@v1
+      with:
+        scope: 'resource-group'
+        subscriptionId: ${{secrets.JJ_007.subscriptionId}}
+        resourceGroupName: ${{vars.wth-team20-rg}}
+        template: ./InfrastructureAsCode/main.bicep
+        #parameters: ./InfrastructureAsCode/main.parameters.json
+        
