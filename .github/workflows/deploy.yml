@@ -19,7 +19,7 @@ jobs:
       uses: azure/arm-deploy@v1
       with:
         scope: resourcegroup
-        subscriptionId: ${{ secrets.subscriptionId }}
-        resourceGroupName: ${{ secrets.TEAM5_RESOURCE_GROUP_NAME }}
+        subscriptionId: ${{ secrets.AZURE_CREDENTIALS.subscriptionId }}
+        resourceGroupName: ${{ env.TEAM5_RESOURCE_GROUP_NAME }}
         template: ./InfrastructureAsCode/main.bicep
         parameters: ./InfrastructureAsCode/main.parameters.json
