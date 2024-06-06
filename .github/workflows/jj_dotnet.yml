@@ -5,10 +5,10 @@ name: .NET
 
 on:
   push:
-    path: wth_team5/Application/**
+    path: Application/**
     branches: [ "main" ]
   pull_request:
-    path: wth_team5/Application/**
+    path: Application/**
     branches: [ "main" ]
 
 jobs:
