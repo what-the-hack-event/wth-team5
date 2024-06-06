@@ -1,4 +1,4 @@
-name:deploy to Azure
+name: Deploy to Azure
 
 
 
@@ -20,7 +20,7 @@ on:
       with:
         scope: 'resource-group'
         subscriptionId: ${{secrets.JJ_007.subscriptionId}}
-        resourceGroupName: ${{env.wth-team20-rg}}
+        resourceGroupName: ${{vars.wth-team20-rg}}
         template: ./InfrastructureAsCode/main.bicep
         parameters: ./InfrastructureAsCode/main.parameters.json
         
