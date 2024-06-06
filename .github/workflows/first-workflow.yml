@@ -15,7 +15,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
     - name: Cowsay Action
-      uses: nwtgck/gh-action-cowsay@v1
+      uses: mscoutermarsh/cowsays-action@master
       with:
         text: "Hello, from GitHub Actions!"
     
