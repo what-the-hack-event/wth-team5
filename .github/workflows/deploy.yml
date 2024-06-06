@@ -20,6 +20,6 @@ jobs:
       with:
         scope: resourcegroup
         subscriptionId: ${{ secrets.AZURE_CREDENTIALS.subscriptionId }}
-        resourceGroupName: "TEAM5_RESOURCE_GROUP_NAME"
+        resourceGroupName: ${{ vars.TEAM5_RESOURCE_GROUP_NAME }}
         template: ./InfrastructureAsCode/main.bicep
         parameters: ./InfrastructureAsCode/main.parameters.json
