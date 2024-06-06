@@ -18,4 +18,6 @@ jobs:
       uses: mscoutermarsh/cowsays-action@master
       with:
         text: "Hello, from GitHub Actions!"
+        color: "purple"
+        
     
