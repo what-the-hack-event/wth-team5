@@ -22,3 +22,4 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_CREDENTIALS.subscriptionId }}
         resourceGroupName: ${{ vars.TEAM5_RESOURCE_GROUP_NAME }}
         template: ./InfrastructureAsCode/main.bicep
+        parameters: ./InfrastructureAsCode/main.parameters.json

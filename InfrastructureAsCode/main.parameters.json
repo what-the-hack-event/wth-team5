@@ -1,0 +1,16 @@
+    {
+        "parameters": {
+            "environment": {
+                "type": "string",
+                "defaultValue": "test",
+                "allowedValues": [
+                    "dev",
+                    "test",
+                    "prod"
+                ],
+                "metadata": {
+                    "description": "The environment for the infrastructure"
+                }
+            }
+        }
+    }
