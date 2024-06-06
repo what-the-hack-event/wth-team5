@@ -18,7 +18,7 @@ jobs:
       with:
         scope: 'resource-group'
         subscriptionId: ${{secrets.JJ_007.subscriptionId}}
-        resourceGroupName: ${{vars.wth-team20-rg}}
+        resourceGroupName: ${{vars.RESOURCEG_JJ}}
         template: ./InfrastructureAsCode/main.bicep
         #parameters: ./InfrastructureAsCode/main.parameters.json
         
