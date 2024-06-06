@@ -1,0 +1,9 @@
+
+
+
+
+
+    registryName - the full server address of your ACR instance. Set this to “registryName.azurecr.io” - replacing registryName with the <prefix>devopsreg value in your ARM template file (line #26).
+    repositoryName - The repository to target in the registry. Set this to “wth/dotnetcoreapp”.
+    dockerFolderPath - The path to the folder that contains the Dockerfile - a critical parameter. You will need to point to the folder: Application/src/RazorPagesTestSample.
+    tag - This needs to be a unique value each time, as this is used to version the images in the repository. GitHub makes environment variables available that helps with this. Set tag to the github.run_number environment variable.
