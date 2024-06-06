@@ -1,4 +1,7 @@
-on: workflow_dispatch
+on: 
+  workflow_dispatch:
+  issues:
+    types: [opened]
 
 jobs:
   job1:
@@ -10,6 +13,7 @@ jobs:
       run: echo "Step2"
 
   job2:
+    needs: job1
     runs-on: ubuntu-latest
     steps:
     - name: Checkout code
@@ -19,5 +23,3 @@ jobs:
       with:
         text: "Hello, from GitHub Actions!"
         color: "purple"
-        
-    
